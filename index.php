@@ -3,6 +3,10 @@
  * Data source
  */
 const CURRENCY_SRC     = 'http://www.cbr.ru/scripts/XML_daily.asp';
+
+/**
+ * XSLT Template
+ */
 const TEMPLATE         = '/template/main.xsl';
 
 /**
@@ -39,7 +43,7 @@ function loadXMLData(string $source, string $cacheName):string
 
     $data = iconv('cp1251', 'utf8', $loader);
     if (!$data)
-        throw new Exception('Unable to load encode XML source.');
+        throw new Exception('Unable to encode XML source.');
 
     $data = str_replace(['windows-1251', ','], ['utf-8', '.'], $data);
 
@@ -50,7 +54,7 @@ function loadXMLData(string $source, string $cacheName):string
     setStylesheet($xml, TEMPLATE);
 
     if (!$xml->save($cacheName))
-        throw new Exception('Unable to save chache XML file.');
+        throw new Exception('Unable to save XML file in cache.');
 
     return  $xml->saveXML();
 }
