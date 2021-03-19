@@ -1,4 +1,2 @@
-Необходимо document root сервера направить на директорию с index.php
-Директория data должна иметь права на создание файлов от пользователя под 
-которым работает web сервер.
-Я тестировал это все под php 7.4
+You need to set chmod RW rights on data folder.
+Tested with PHP 7.4
